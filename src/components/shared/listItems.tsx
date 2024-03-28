@@ -7,6 +7,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import { NavLink, useLocation } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 function ListItemLink({ icon, primary, to }) {
   const location = useLocation();

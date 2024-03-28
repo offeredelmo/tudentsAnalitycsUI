@@ -78,7 +78,8 @@ export default function InformacionDocente () {
   };
 
   return (
-    <Box sx={{ width: '100%' }} marginTop={8}>
+    <Box padding={2}  paddingTop='64px' sx={{height:"100vh", flexGrow: 1, overflow: 'auto' }}>
+
       <Typography variant="h3">Docentes </Typography>
             <Breadcrumbs aria-label="breadcrumb">
                 <Typography variant="overline" color="text.primary">Docentes</Typography>

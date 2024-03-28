@@ -31,7 +31,7 @@ const selectColor = (estatus) => {
 
 export const TableDocentes = () => {
     return (
-        <Box>
+        <Box> 
             <Typography variant="h3">Docentes </Typography>
             <Breadcrumbs aria-label="breadcrumb">
                 <Typography variant="overline" color="text.primary">Docentes</Typography>
@@ -41,7 +41,7 @@ export const TableDocentes = () => {
                     <ToolBarDocentes></ToolBarDocentes>
                 
             
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} sx={{marginTop:"2vh"}}>
                 <Table>
                     <TableHead >
                         <TableRow >
@@ -76,7 +76,7 @@ export const TableDocentes = () => {
                                         </TableCell>
                                         <TableCell>{docentes.grupos}</TableCell>
                                         <TableCell>
-                                        <Link to="/docentes/docentes/informacion">
+                                        <Link to="/director/docentes/informacion">
                                             <IconButton aria-label="informacion">
                                                 <InfoOutlinedIcon/>
                                             </IconButton>

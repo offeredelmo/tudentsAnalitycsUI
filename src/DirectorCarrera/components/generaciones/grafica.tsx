@@ -13,7 +13,7 @@ const data = [
 const Grafica = () => {
     return (
             <Box >
-                <Box sx={{ marginTop: '20px', height: '300px', position: 'relative' }}>
+                <Box sx={{ marginTop: '20px', height: '90%', position: 'relative' }}>
 
                     <LineChart width={600} height={300} data={data}>
                         <Legend

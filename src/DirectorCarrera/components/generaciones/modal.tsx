@@ -1,33 +1,32 @@
 import React, { useState } from 'react';
-import { Modal, Box, Typography, Paper, IconButton } from '@mui/material';
+import { Modal, Box, Typography, Paper, IconButton, Tabs, Tab } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Reporte from './reporte';
 import Imformacion from './informacion';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import Tab from './tab';
 
 const ModalComponent = ({ open, handleClose }) => {
     const theme = useTheme();
-
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const [selectedTab, setSelectedTab] = useState('info'); // Estado para manejar la pestaña seleccionada
 
-    const handleTabClick = (tab) => {
-        setSelectedTab(tab);
+    const [value, setValue] = useState(0);
+
+
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        setValue(newValue);
     };
 
-    // Función para renderizar el contenido seleccionado
-    const renderContent = () => {
-        switch (selectedTab) {
-            case 'info':
-                return <Imformacion/>; 
-            case 'reports':
-                return <Reporte/>; 
-            case 'tab':
-                return <Tab/> 
+    const renderTabContent = (tabIndex: number) => {
+        switch (tabIndex) {
+            case 0:
+                return <h1>Hola mundo1</h1>;
+            case 1:
+                return <h1>Hola mundo2</h1>;
+            case 2:
+                return <h1>Hola mundo3</h1>;
             default:
-                return null;
+                return <Typography>Selecciona una opción</Typography>;
         }
     };
 
@@ -38,66 +37,27 @@ const ModalComponent = ({ open, handleClose }) => {
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
         >
-            <Box sx={{ width: '100%', height: '100%' }}>
+            <Box sx={{ width: '100vw', height: '100vh' }}>
                 <Paper sx={{
-                    width: isMobile ? '100%' : '50%',
-                    margin: 'auto',
+                    width: isMobile ? '100%' : '50vw',
                     marginLeft: isMobile ? '0%' : '50%',
-                    maxHeight: '100vh',
+                    height: '100vh',
                     overflowY: 'auto',
+                    paddingTop: "20px"
+
                 }}>
+                    <Tabs value={value} onChange={handleChange} variant="fullWidth">
+                        <Tab label="Información General" />
+                        <Tab label="Calificaciones" />
+                        <Tab label="Reportes" />
+                        <Tab label="Gráficas" />
+                    </Tabs>
                     <Box sx={{ display: 'flex', justifyContent: 'space-around', marginBottom: '20px' }}>
-                        <Box
-                            sx={{
-                                display: 'inline-block',
-                                marginRight: '20px',
-                                '&:hover': {
-                                    borderBottom: '2px solid #7EC8E3',
-                                },
-                                ...(selectedTab === 'info' && {
-                                    borderBottom: '2px solid #7EC8E3',
-                                }),
-                            }}
-                            onClick={() => handleTabClick('info')}
-                        >
-                            <Typography variant="subtitle1">INFORMACIÓN GENERAL</Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: 'inline-block',
-                                marginRight: '20px',
-                                '&:hover': {
-                                    borderBottom: '2px solid #7EC8E3',
-                                },
-                                ...(selectedTab === 'reports' && {
-                                    borderBottom: '2px solid #7EC8E3',
-                                }),
-                            }}
-                            onClick={() => handleTabClick('reports')}
-                        >
-                            <Typography variant="subtitle1">REPORTES</Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: 'inline-block',
-                                '&:hover': {
-                                    borderBottom: '2px solid #7EC8E3',
-                                },
-                                ...(selectedTab === 'tab' && {
-                                    borderBottom: '2px solid #7EC8E3',
-                                }),
-                            }}
-                            onClick={() => handleTabClick('tab')}
-                        >
-                            <Typography variant="subtitle1">TAB</Typography>
-                        </Box>
+
+
+                        {/* Renderiza el contenido del tab seleccionado */}
+                        {renderTabContent(value)}
                     </Box>
-                    <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 0, right: 0 }}>
-                        <CloseIcon />
-                    </IconButton>
-                
-                    {renderContent()}
-                    
                 </Paper>
             </Box>
         </Modal>

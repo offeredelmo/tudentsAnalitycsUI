@@ -3,16 +3,16 @@ import { TableDocentes } from "./DocentesTable";
 
 export const Busqueda = () => {
   return (
-      <Box paddingTop={8} sx={{ flexGrow: 1, overflow: 'auto' }}>
-        <Grid xs ={12} container spacing={2}>  
-          <Grid item xs={12}>
-              <Box>
+    <Box padding={2} paddingTop='64px' sx={{ flexGrow: 1, overflow: 'auto' }}>
+      <Grid xs={12} container spacing={2}>
+        <Grid item xs={12}>
+          <Box>
             <TableDocentes></TableDocentes>
-            </Box>
-          </Grid>
+          </Box>
         </Grid>
-      </Box>
-      
-    
+      </Grid>
+    </Box>
+
+
   );
 };
