@@ -1,8 +1,8 @@
 import { Box, Breadcrumbs, Typography } from "@mui/material"
-import { useCallback, useState } from "react";
-import { BasicModal } from "../../components/estudiantes/ModalReport";
-import { ToolBarEstudents } from "../../components/estudiantes/ToolBarEstudents";
-import { TableEstudents } from "../../components/estudiantes/TableEstudents";
+import { useState } from "react";
+import { BasicModal } from "../components/ModalReport";
+import { ToolBarEstudents } from "../components/ToolBarEstudents";
+import { TableEstudents } from "../components/TableEstudents";
 
 export interface estudent{
     matricula:string,

@@ -7,10 +7,10 @@ import { Breadcrumbs} from "@mui/material"
 import { useState } from 'react';
 import WeeklySchedule from './HorarioDocente';
 import { DocentReporte } from './ReporteDocente';
-import { estudents } from '../../pages/estudiantes/EstudiantesMain';
-import { TableEstudents } from '../estudiantes/TableEstudents';
-import { BasicModal } from '../estudiantes/ModalReport';
-import { ToolBarEstudents } from '../estudiantes/ToolBarEstudents';
+import { estudents } from '../../DC-estudiantes/pages/EstudiantesMain';
+import { TableEstudents } from '../../DC-estudiantes/components/TableEstudents';
+import { BasicModal } from '../../DC-estudiantes/components/ModalReport';
+import { ToolBarEstudents } from '../../DC-estudiantes/components/ToolBarEstudents';
 
 
 interface TabPanelProps {

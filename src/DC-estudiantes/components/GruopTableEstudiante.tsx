@@ -1,8 +1,8 @@
-import { estudent } from "../../pages/estudiantes/EstudianteDashboard"
-import { TableDatosPersonales } from "./Tables/TableDatosPersonales"
-import { TableDireccionActual } from "./Tables/TableDireccionActual"
-import { TableDireccionFamiliar } from "./Tables/TableDireccionFamiliar"
-import { TableTutor } from "./Tables/TableTutor"
+import { estudent } from "../pages/EstudianteDashboard"
+import { TableDatosPersonales } from "./Table/TableDatosPersonales"
+import { TableDireccionActual } from "./Table/TableDireccionActual"
+import { TableDireccionFamiliar } from "./Table/TableDireccionFamiliar"
+import { TableTutor } from "./Table/TableTutor"
 
 
 export const GroupTableEstudiante = ({estudents}:{estudents:estudent[]}) => {

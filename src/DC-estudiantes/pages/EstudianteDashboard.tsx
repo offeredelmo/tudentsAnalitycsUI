@@ -1,11 +1,9 @@
 import { Box, Breadcrumbs, Collapse, IconButton, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tabs, Typography } from "@mui/material"
 
 import { useState } from "react";
-import AppBarCustom from "../../../components/shared/AppBarCustom";
-import DrawerCustom from "../../../components/shared/DraweCustom";
-import { CardReporte } from "../../components/estudiantes/CardReporte";
-import { TableCalificaciones } from "../../components/estudiantes/Tables/TableCalificaciones";
-import { GroupTableEstudiante } from "../../components/estudiantes/GruopTableEstudiante";
+import { CardReporte } from "../components/CardReporte";
+import { TableCalificaciones } from "../components/Table/TableCalificaciones";
+import { GroupTableEstudiante } from "../components/GruopTableEstudiante";
 
 export interface estudent {
   matricula: string,

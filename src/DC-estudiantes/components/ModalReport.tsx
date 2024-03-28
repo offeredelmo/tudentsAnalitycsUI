@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Button, TextField } from '@mui/material';
 import { useCallback, useState } from 'react';
-import Dropzone from '../../../components/shared/DropZoneModal';
+import Dropzone from 'react-dropzone';
 
 const style = {
   position: 'absolute' as 'absolute',

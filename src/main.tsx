@@ -10,19 +10,19 @@ import '@fontsource/roboto/700.css';
 
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material';
-import { App2 } from './DirectorCarrera/pages/generaciones/generaciones.tsx';
 
 
 
 
-import { EstudiantesMain } from './DirectorCarrera/pages/estudiantes/EstudiantesMain.tsx';
-import { EstudianteDashboard } from './DirectorCarrera/pages/estudiantes/EstudianteDashboard.tsx';
 import { LogIn } from './User/pages/LogIn.tsx';
 import { SignIn } from './User/pages/SignIn.tsx';
-import { TableComponent } from './DirectorCarrera/components/generaciones/generaciones.tsx';
-import { Busqueda } from './DirectorCarrera/components/docentes/Busqueda.tsx';
-import InformacionDocente from './DirectorCarrera/components/docentes/InformacionDocente.tsx';
 import { Dashboard } from './Dashboard.tsx';
+import { EstudiantesMain } from './DC-estudiantes/pages/EstudiantesMain.tsx';
+import { EstudianteDashboard } from './DC-estudiantes/pages/EstudianteDashboard.tsx';
+import { TableComponent } from './DC-generaciones/components/generaciones.tsx';
+import { Busqueda } from './DC-docentes/components/Busqueda.tsx';
+import InformacionDocente from './DC-docentes/components/InformacionDocente.tsx';
+import { App2 } from './DC-generaciones/pages/generaciones.tsx';
 
 const darkTheme = createTheme({
   palette: {

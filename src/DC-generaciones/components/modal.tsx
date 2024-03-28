@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Modal, Box, Typography, Paper, IconButton, Tabs, Tab } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import Reporte from './reporte';
-import Imformacion from './informacion';
+
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { InformacionGeneracion } from './InformacionGeneracion';
 
 const ModalComponent = ({ open, handleClose }) => {
     const theme = useTheme();
@@ -20,7 +19,7 @@ const ModalComponent = ({ open, handleClose }) => {
     const renderTabContent = (tabIndex: number) => {
         switch (tabIndex) {
             case 0:
-                return <h1>Hola mundo1</h1>;
+                return  <InformacionGeneracion/>;
             case 1:
                 return <h1>Hola mundo2</h1>;
             case 2:
@@ -39,8 +38,8 @@ const ModalComponent = ({ open, handleClose }) => {
         >
             <Box sx={{ width: '100vw', height: '100vh' }}>
                 <Paper sx={{
-                    width: isMobile ? '100%' : '50vw',
-                    marginLeft: isMobile ? '0%' : '50%',
+                    width: isMobile ? '100%' : '60%',
+                    marginLeft: isMobile ? '0%' : '40%',
                     height: '100vh',
                     overflowY: 'auto',
                     paddingTop: "20px"
@@ -53,8 +52,6 @@ const ModalComponent = ({ open, handleClose }) => {
                         <Tab label="Gráficas" />
                     </Tabs>
                     <Box sx={{ display: 'flex', justifyContent: 'space-around', marginBottom: '20px' }}>
-
-
                         {/* Renderiza el contenido del tab seleccionado */}
                         {renderTabContent(value)}
                     </Box>
