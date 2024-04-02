@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import AppBarCustom from "../../components/shared/AppBarCustom";
 import DrawerCustom from "../../components/shared/DraweCustom";
-import { Dropzone } from "../../components/DropZoneModal";
 import { Card, CardActionArea, CardContent, Typography, Box, Button } from "@mui/material";
+import Dropzone from "../../components/shared/DropZoneModal";
 
 export const Upload = () => {
     const [open, setOpen] = useState(true);
@@ -31,10 +31,7 @@ export const Upload = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            <AppBarCustom open={open} toggleDrawer={toggleDrawer} />
-            <DrawerCustom open={open} toggleDrawer={toggleDrawer} />
-            <Outlet />
+         
             <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 9, display: 'flex', flexDirection: 'row', justifyContent: 'left', gap: 4 }}>
                 {/* Contenedor para las Cards */}
                 <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: 900 }}>
@@ -84,6 +81,5 @@ export const Upload = () => {
                     </CardActionArea>
                 </Card>
             </Box>
-        </Box>
     );
 };
