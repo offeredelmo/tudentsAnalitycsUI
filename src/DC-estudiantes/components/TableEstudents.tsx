@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const tableHead: string[] = [
+    "",
     "Matricula",
     "Nombre",
     "Status",
@@ -64,7 +65,9 @@ export const TableEstudents = ({ onMatriculaSelect, selectedMatriculas, estudent
                                                 onChange={(event) => handleSelect(event, estuden.matricula)}
                                                 checked={selectedMatriculas.includes(estuden.matricula)}
                                             />
-                                            {estuden.matricula}
+                                        </TableCell>
+                                        <TableCell>
+                                        {estuden.matricula}
                                         </TableCell>
                                         <TableCell>{`${estuden.nombre} ${estuden.apellidoPaterno} ${estuden.apellidoMaterno}`}</TableCell>
                                         <TableCell>

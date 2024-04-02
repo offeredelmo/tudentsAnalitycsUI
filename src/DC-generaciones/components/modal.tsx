@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Modal, Box, Typography, Paper, IconButton, Tabs, Tab } from '@mui/material';
-
+import CloseIcon from '@mui/icons-material/Close';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { InformacionGeneracion } from './InformacionGeneracion';
+import { InformacionGeneracionSkeleton } from './InformacionGeneracionSkeleton';
 
 const ModalComponent = ({ open, handleClose }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const [value, setValue] = useState(0);
+    const [skeleton, setSkeleton] = useState(false)
 
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -19,7 +21,7 @@ const ModalComponent = ({ open, handleClose }) => {
     const renderTabContent = (tabIndex: number) => {
         switch (tabIndex) {
             case 0:
-                return  <InformacionGeneracion/>;
+                return skeleton ? <InformacionGeneracion /> : <InformacionGeneracionSkeleton/>;
             case 1:
                 return <h1>Hola mundo2</h1>;
             case 2:
@@ -47,7 +49,6 @@ const ModalComponent = ({ open, handleClose }) => {
                 }}>
                     <Tabs value={value} onChange={handleChange} variant="fullWidth">
                         <Tab label="Información General" />
-                        <Tab label="Calificaciones" />
                         <Tab label="Reportes" />
                         <Tab label="Gráficas" />
                     </Tabs>
@@ -56,7 +57,11 @@ const ModalComponent = ({ open, handleClose }) => {
                         {renderTabContent(value)}
                     </Box>
                 </Paper>
+                <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 0, right: 0 }}>
+                <CloseIcon />
+            </IconButton>
             </Box>
+            
         </Modal>
     );
 };
