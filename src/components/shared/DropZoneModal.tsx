@@ -19,12 +19,24 @@ export const Dropzone = ({setFiles, files}) => {
 
     return (
         <div style={{ width: '100%' }}>
-            <div {...getRootProps()} style={{ border: '2px dashed #007bff', width: '100%', textAlign: 'center', marginTop: 20, marginBottom: 20 }}>
-                <input {...getInputProps()} />
+<div
+  {...getRootProps()}
+  style={{
+    border: '2px dashed #000000',
+    width: '90%', 
+    height: '300px',
+    textAlign: 'center',
+    padding: '150px 0', 
+    marginTop: 20,
+    marginBottom: 20,
+    boxSizing: 'border-box',
+    background: '#D9D9D9' 
+  }}
+>                <input {...getInputProps()} />
                 {
                     isDragActive ?
-                        <p>Suelta los archivos aquí...</p> :
-                        <p>Selecciona archivos</p>
+                        <p style={{ margin: 0 }}>Suelta los archivos aquí...</p> :
+                        <p style={{ margin: 0 }}>Selecciona archivos</p>
                 }
             </div>
             <ul>

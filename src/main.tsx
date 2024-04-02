@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -14,7 +14,6 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 
 
-import { LogIn } from './User/pages/LogIn.tsx';
 import { SignIn } from './User/pages/SignIn.tsx';
 import { Dashboard } from './Dashboard.tsx';
 import { EstudiantesMain } from './DC-estudiantes/pages/EstudiantesMain.tsx';
@@ -23,6 +22,7 @@ import { TableComponent } from './DC-generaciones/components/generaciones.tsx';
 import { Busqueda } from './DC-docentes/components/Busqueda.tsx';
 import InformacionDocente from './DC-docentes/components/InformacionDocente.tsx';
 import { App2 } from './DC-generaciones/pages/generaciones.tsx';
+import LogIn from './User/pages/LogIn.tsx';
 
 const darkTheme = createTheme({
   palette: {
@@ -40,6 +40,7 @@ const router = createBrowserRouter([
     path: "/sigin",
     element: <SignIn />,
   },
+
   {
 
     path: "/director/",
