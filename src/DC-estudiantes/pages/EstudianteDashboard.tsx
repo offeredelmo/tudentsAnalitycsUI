@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CardReporte } from "../components/CardReporte";
 import { TableCalificaciones } from "../components/Table/TableCalificaciones";
 import { GroupTableEstudiante } from "../components/GruopTableEstudiante";
+import { CardReporteSkeleton } from "../components/CardReportSkeleton";
 
 export interface estudent {
   matricula: string,
@@ -97,15 +98,16 @@ export const EstudianteDashboard = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  const [skeleton, setSkeleton] = useState(true)
 
   const renderTabContent = (tabIndex: number) => {
     switch (tabIndex) {
       case 0: 
         return <GroupTableEstudiante estudents={estudents} />;
       case 1: 
-        return <TableCalificaciones></TableCalificaciones>;
+        return  <TableCalificaciones></TableCalificaciones>;
       case 2: 
-        return <CardReporte></CardReporte>;
+        return skeleton? <CardReporteSkeleton></CardReporteSkeleton> :<CardReporte></CardReporte>;
       case 3: 
         return <Typography>graficas</Typography>;
       default:
