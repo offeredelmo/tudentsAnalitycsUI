@@ -1,82 +1,100 @@
 import React, { useState } from 'react';
-import { DataGrid, GridColDef, GridCellParams } from '@mui/x-data-grid';
-import InfoIcon from '@mui/icons-material/Info';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
+import {
+  Checkbox,
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TablePagination,
+} from '@mui/material';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { useGeneraciones } from '../hooks/useGeneraciones';
+import { TableGeneracionSkeleton } from './generacionesSkeleton';
+import { useManejoPaginas } from '../hooks/useManejoPaginas';
 import ModalComponent from './modal';
-import { Box, Breadcrumbs } from '@mui/material';
-import Imformacion from './informacion';
-import Reporte from './reporte';
+
+import { ToolBarGeneraciones } from './ToolBarGeneraciones';
+import { Generaciones } from '../services/getGeneraciones';
+
+
+const tableHead = ["Generación", "Fecha de Ingreso", "Fecha de Egreso", "Estudiante con Rezago", "Información"];
+
 
 export const TableComponent = () => {
-  const [openModal, setOpenModal] = useState(false);
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
+  const { page, perPage, handleChangePage, handleChangePerPage } = useManejoPaginas();
+  const { isLoading, isError, isSuccess, data, error } = useGeneraciones(page, perPage);
+
+  const [openModal, setOpenModal] = useState(false);
+  const [dataGeneracion, setDataGeneracion] = useState<number>(0)
+
+   const getData = (generacion: number) => {
+     setDataGeneracion(generacion)
+     setOpenModal(true);
+   }
 
   const handleCloseModal = () => {
     setOpenModal(false);
   };
 
-  const columns: GridColDef[] = [
-    { field: 'generacion', headerName: 'Generación', flex: 1 },
-    { field: 'fechaIngreso', headerName: 'Fecha de Ingreso', flex: 1 },
-    { field: 'fechaEgreso', headerName: 'Fecha de Egreso', flex: 1 },
-    { field: 'estudianteRezago', headerName: 'Estudiante con Rezago', flex: 1 },
-    {
-      field: 'informacion',
-      headerName: 'Información',
-      flex: 1,
-      renderCell: (params: GridCellParams) => (
-        <InfoIcon style={{ cursor: 'pointer' }} onClick={handleOpenModal} />
-      ),
-    },
-    {
-      field: 'favorito',
-      headerName: 'Favorito',
-      flex: 1,
-      renderCell: (params: GridCellParams) => (
-        params.value === 'Sí' ? <StarIcon color="primary" /> : <StarBorderIcon color="disabled" />
-      ),
-    },
-  ];
-  
-
-  const rows = [
-    { id: 1, generacion: '211', fechaIngreso: '01/01/2023', fechaEgreso: '01/01/2024', estudianteRezago: '2', informacion: '', favorito: 'Sí' },
-  ];
 
   return (
-    <div>
-      <Box sx={{ padding: '15px' }}>
-        <Typography variant="h3">Generaciones</Typography>
-        <Breadcrumbs aria-label="breadcrumb">
-          <Typography color="text.primary">Estudiantes</Typography>
-          <Typography color="text.primary"></Typography>
-        </Breadcrumbs>
-      </Box>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-        <TextField variant="outlined" label="Search" size="small" />
-        <div>
-          <Button variant="outlined" onClick={handleOpenModal}>Reporte</Button> {/* Abre el modal al hacer clic en el botón */}
-          <Button variant="outlined" style={{ marginLeft: '10px', backgroundColor: '#2196f3', color: 'white' }}>
-            Action
-          </Button>          </div>
-      </div>
-      <div style={{ height: "80vh", width: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5, 10, 20]}
-          checkboxSelection
-        />
-      </div>
-      <ModalComponent open={openModal} handleClose={handleCloseModal} Contenido={Imformacion} />
-    </div>
+    <>
+      {
+        isLoading ? <TableGeneracionSkeleton /> : null
+      }
+      {
+        isError ? <p>Ha ocurrido un error: {error.message}. refresca o intentalo mas tarde</p> : null
+      }
+      {
+        isSuccess ?
+        <>
+          <TableContainer component={Paper} sx={{ height: 'auto', marginTop: '2vh' }}>
+            <Table stickyHeader>
+              <TableHead>
+                <TableRow>
+                  {tableHead.map((title) => (
+                    <TableCell key={title}>{title}</TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data.data.map((generacion) => (
+                  <TableRow key={generacion.matricula} hover>
+
+                    <TableCell>{generacion.matricula}</TableCell>
+                    <TableCell>{generacion.fecha_ingreso}</TableCell>
+                    <TableCell>{generacion.fecha_egreso}</TableCell>
+                    <TableCell>{generacion.estudiantes_resago}</TableCell>
+                    <TableCell>
+                      <IconButton aria-label="informacion" onClick={() => {getData(Number(generacion.matricula))}}>
+                        <InfoOutlinedIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <TablePagination
+              rowsPerPageOptions={[10]}
+              component="div"
+              count={100}
+              rowsPerPage={perPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangePerPage}
+            />
+
+          </TableContainer>
+          <ModalComponent open={openModal} handleClose={handleCloseModal} generacion={dataGeneracion} />
+          </>
+
+          : null
+      }
+    </>
   );
 };

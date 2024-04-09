@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const tableHead: string[] = [
+    "",
     "Matricula",
     "Nombre",
     "Status",
@@ -41,14 +42,11 @@ export const TableEstudentsSkeleton = () => {
                             rows.map((row) => {
                                 return (
                                     <TableRow key={row} hover>
+                                        <TableCell sx={{display:"flex", justifyContent:"center"}}>
+                                            <Skeleton animation="wave" variant="rounded" width={20} />
+                                        </TableCell>
                                         <TableCell>
-                                        
-                                            <Box sx={{ width: "20px", marginRight:"5px", display:"inline-block"}}>
-                                                <Skeleton animation="wave" variant="rounded" width="20px" />
-                                            </Box>
-                                            <Box sx={{width:"calc(100% - 25px)", display:"inline-block"}}>
-                                                <Skeleton animation="wave" variant="rounded" width="80%" />
-                                            </Box>
+                                            <Skeleton animation="wave" variant="rounded" />
                                         </TableCell>
                                         <TableCell>
                                             <Skeleton animation="wave" variant="rounded" />

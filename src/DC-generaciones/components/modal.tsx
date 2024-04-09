@@ -4,15 +4,17 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { InformacionGeneracion } from './InformacionGeneracion';
+import { Generacion } from '../services/getGeneraciones';
+import { useInfoGeneracioenesGeneraciones } from '../hooks/useInfoGeneraciones';
 import { InformacionGeneracionSkeleton } from './InformacionGeneracionSkeleton';
 
-const ModalComponent = ({ open, handleClose }) => {
+
+const ModalComponent = ({ open, handleClose, generacion }: { open: boolean, handleClose: any, generacion: number }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
     const [value, setValue] = useState(0);
-    const [skeleton, setSkeleton] = useState(false)
 
+    const { isLoading, isError, isSuccess, data, error} = useInfoGeneracioenesGeneraciones(generacion)
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -21,7 +23,16 @@ const ModalComponent = ({ open, handleClose }) => {
     const renderTabContent = (tabIndex: number) => {
         switch (tabIndex) {
             case 0:
-                return skeleton ? <InformacionGeneracion /> : <InformacionGeneracionSkeleton/>;
+                if (isLoading) {
+                    return <InformacionGeneracionSkeleton/>
+                }
+                if (isSuccess) {
+                    return <InformacionGeneracion contenido={data} />;
+                }
+                if (isError) {
+                    return <h1>Erro al cargar intentalo mas tarde o refresca la pagina </h1>
+                }
+                return <h1>Erro al cargar</h1>;
             case 1:
                 return <h1>Hola mundo2</h1>;
             case 2:
@@ -58,10 +69,10 @@ const ModalComponent = ({ open, handleClose }) => {
                     </Box>
                 </Paper>
                 <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 0, right: 0 }}>
-                <CloseIcon />
-            </IconButton>
+                    <CloseIcon />
+                </IconButton>
             </Box>
-            
+
         </Modal>
     );
 };

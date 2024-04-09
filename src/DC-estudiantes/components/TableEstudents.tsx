@@ -92,7 +92,6 @@ export const TableEstudents = ({ onMatriculaSelect, selectedMatriculas, estudent
                                             </IconButton>
 
                                         </TableCell>
-
                                     </TableRow>
                                 )
                             })

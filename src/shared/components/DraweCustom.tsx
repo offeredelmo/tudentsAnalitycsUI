@@ -8,7 +8,7 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { MainListItems} from '../shared/listItems'; 
+import { MainListItems } from './listItems';
 
 const drawerWidth = 240;
 

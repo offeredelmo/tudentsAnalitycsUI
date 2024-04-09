@@ -45,6 +45,7 @@ export const TableDocentesSkeleton = () => {
                         {
                             rows.map((docentes, index) => {
                                 return (
+                                    
                                     <TableRow key={index}>
                                         <TableCell sx={{display:"flex", justifyContent:"center"}}>
                                             <Skeleton animation="wave" variant="rounded" width={20} />

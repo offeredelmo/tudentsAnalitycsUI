@@ -134,7 +134,6 @@ export const EstudiantesMain = () => {
             {skeleton ? 
                 <TableEstudents onMatriculaSelect={handleSelectMatricula} selectedMatriculas={selectedMatriculas} estudents={estudents}></TableEstudents> : <TableEstudentsSkeleton></TableEstudentsSkeleton>
             }
-            
 
             <BasicModal open={open} handleClose={handleClose} matriculas={selectedMatriculas}></BasicModal>
         </Box>

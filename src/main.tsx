@@ -11,7 +11,11 @@ import '@fontsource/roboto/700.css';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material';
 
-
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 
 
 import { SignIn } from './User/pages/SignIn.tsx';
@@ -48,6 +52,10 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
+        path: "generaciones",
+        element: <App2 TableComponent={TableComponent} />,
+      },
+      {
         path: "estudiantes/main",
         element: <EstudiantesMain />,
       },
@@ -55,10 +63,6 @@ const router = createBrowserRouter([
         path: "estudiantes/:id",
         element: <EstudianteDashboard />,
 
-      },
-      {
-        path: "generaciones",
-        element: <App2 TableComponent={TableComponent} />,
       },
       {
         path: "docentes/main",
@@ -76,11 +80,15 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
       <CssBaseline></CssBaseline>
-      <RouterProvider router={router}></RouterProvider>
+      <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}></RouterProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   </React.StrictMode>,
 

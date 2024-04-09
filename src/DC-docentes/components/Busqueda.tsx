@@ -5,7 +5,7 @@ import { TableDocentesSkeleton } from './DocentesTableSkeleton';
 
 export const Busqueda = () => {
 
-  const [skeleton, setSkeleton] = useState(true)
+  const [skeleton, setSkeleton] = useState(false)
 
   return (
     <Box padding={2} paddingTop='64px' sx={{ flexGrow: 1, overflow: 'auto' }}>

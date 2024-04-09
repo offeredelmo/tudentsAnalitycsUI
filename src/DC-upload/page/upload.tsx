@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import AppBarCustom from "../../components/shared/AppBarCustom";
-import DrawerCustom from "../../components/shared/DraweCustom";
 import { Card, CardActionArea, CardContent, Typography, Box, Button } from "@mui/material";
-import Dropzone from "../../components/shared/DropZoneModal";
+import Dropzone from "../../shared/components/DropZoneModal";
 
 export const Upload = () => {
     const [open, setOpen] = useState(true);
