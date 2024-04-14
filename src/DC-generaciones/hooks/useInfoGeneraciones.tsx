@@ -3,10 +3,10 @@ import { getInfoGeneraciones } from "../services/getInfoGeneracion";
 
 
 
-export const useInfoGeneracioenesGeneraciones = (generacion: number) => {
+export const useInfoGeneracioenesGeneraciones = (generacion: number, open: boolean) => {
 
     let { isSuccess, isError, isLoading, data, error } = useQuery({
-        queryKey: ['decks', generacion],
+        queryKey: ['infoGeneracion', generacion],
         queryFn: () => getInfoGeneraciones(generacion),
         refetchOnWindowFocus: false,
     });

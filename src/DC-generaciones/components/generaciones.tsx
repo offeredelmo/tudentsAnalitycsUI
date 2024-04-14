@@ -16,9 +16,9 @@ import { useGeneraciones } from '../hooks/useGeneraciones';
 import { TableGeneracionSkeleton } from './generacionesSkeleton';
 import { useManejoPaginas } from '../hooks/useManejoPaginas';
 import ModalComponent from './modal';
-
 import { ToolBarGeneraciones } from './ToolBarGeneraciones';
-import { Generaciones } from '../services/getGeneraciones';
+
+
 
 
 const tableHead = ["Generación", "Fecha de Ingreso", "Fecha de Egreso", "Estudiante con Rezago", "Información"];
@@ -32,10 +32,10 @@ export const TableComponent = () => {
   const [openModal, setOpenModal] = useState(false);
   const [dataGeneracion, setDataGeneracion] = useState<number>(0)
 
-   const getData = (generacion: number) => {
-     setDataGeneracion(generacion)
-     setOpenModal(true);
-   }
+  const getData = (generacion: number) => {
+    setDataGeneracion(generacion)
+    setOpenModal(true);
+  }
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -44,6 +44,9 @@ export const TableComponent = () => {
 
   return (
     <>
+      <ToolBarGeneraciones>
+
+      </ToolBarGeneraciones>
       {
         isLoading ? <TableGeneracionSkeleton /> : null
       }
@@ -52,45 +55,45 @@ export const TableComponent = () => {
       }
       {
         isSuccess ?
-        <>
-          <TableContainer component={Paper} sx={{ height: 'auto', marginTop: '2vh' }}>
-            <Table stickyHeader>
-              <TableHead>
-                <TableRow>
-                  {tableHead.map((title) => (
-                    <TableCell key={title}>{title}</TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data.data.map((generacion) => (
-                  <TableRow key={generacion.matricula} hover>
-
-                    <TableCell>{generacion.matricula}</TableCell>
-                    <TableCell>{generacion.fecha_ingreso}</TableCell>
-                    <TableCell>{generacion.fecha_egreso}</TableCell>
-                    <TableCell>{generacion.estudiantes_resago}</TableCell>
-                    <TableCell>
-                      <IconButton aria-label="informacion" onClick={() => {getData(Number(generacion.matricula))}}>
-                        <InfoOutlinedIcon />
-                      </IconButton>
-                    </TableCell>
+          <>
+            <TableContainer component={Paper} sx={{ height: 'auto', marginTop: '2vh' }}>
+              <Table stickyHeader>
+                <TableHead>
+                  <TableRow>
+                    {tableHead.map((title) => (
+                      <TableCell key={title}>{title}</TableCell>
+                    ))}
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-            <TablePagination
-              rowsPerPageOptions={[10]}
-              component="div"
-              count={100}
-              rowsPerPage={perPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangePerPage}
-            />
+                </TableHead>
+                <TableBody>
+                  {data.data.map((generacion) => (
+                    <TableRow key={generacion.matricula} hover>
 
-          </TableContainer>
-          <ModalComponent open={openModal} handleClose={handleCloseModal} generacion={dataGeneracion} />
+                      <TableCell>{generacion.matricula}</TableCell>
+                      <TableCell>{generacion.fecha_ingreso}</TableCell>
+                      <TableCell>{generacion.fecha_egreso}</TableCell>
+                      <TableCell>{generacion.estudiantes_resago}</TableCell>
+                      <TableCell>
+                        <IconButton aria-label="informacion" onClick={() => { getData(Number(generacion.matricula)) }}>
+                          <InfoOutlinedIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+              <TablePagination
+                rowsPerPageOptions={[10]}
+                component="div"
+                count={data.total_results}
+                rowsPerPage={perPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangePerPage}
+              />
+
+            </TableContainer>
+            <ModalComponent open={openModal} handleClose={handleCloseModal} generacion={dataGeneracion} />
           </>
 
           : null

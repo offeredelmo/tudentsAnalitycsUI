@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
 import { getGeneraciones } from "../services/getGeneraciones";
+import { getGeneracione } from "../services/getGeneracion";
 
 
 
-export const useGeneraciones = (page: number | null, perPage: number | null) => {
+export const useGeneracion = (matricula: number) => {
 
     let { isSuccess, isError, isLoading, data, error } = useQuery({
-        queryKey: ['generaciones', page+1, perPage],
-        queryFn: () => getGeneraciones(page+1, perPage),
+        queryKey: ['generacion'],
+        queryFn: () => getGeneracione(matricula),
         refetchOnWindowFocus: false,
     });
 

@@ -1,25 +1,23 @@
 import { useState } from "react";
 
-
-
-export const useManejoPaginas = (pageinit: number = 1, perPageinit: number = 10) => {
-
-    const [page, setPage] = useState(pageinit);
+export const useManejoPaginas = (perPageinit: number = 10) => {
+    const [page, setPage] = useState(0); // Cambio aquí, iniciar en 0
     const [perPage, setPerPage] = useState(perPageinit);
-
+  
     const handleChangePage = (event: unknown, newPage: number) => {
-        setPage(newPage);
+      setPage(newPage);
     };
-
+  
     const handleChangePerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPerPage(parseInt(event.target.value, perPageinit));
-        setPage(0); // Resetear a la primera página
+      setPerPage(parseInt(event.target.value, 10));
+      setPage(0); // Cambio aquí, reiniciar a 0
     };
-
+  
     return {
-        page,
-        perPage,
-        handleChangePage,
-        handleChangePerPage,
+      page,
+      perPage,
+      handleChangePage,
+      handleChangePerPage,
     }
-}
+  };
+  

@@ -11,8 +11,6 @@ export const App2 = ({ TableComponent }) => { // Recibe TableComponent como una 
                 <Typography color="text.primary">Generaciones</Typography>
                 <Typography color="text.primary"></Typography>
             </Breadcrumbs>
-          <ToolBarGeneraciones></ToolBarGeneraciones>
-          
         <TableComponent>
 
         </TableComponent>

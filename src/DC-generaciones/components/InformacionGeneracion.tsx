@@ -6,7 +6,7 @@ import { Infogeneraciones } from "../services/getInfoGeneracion"
 
 
 
-export const InformacionGeneracion = ({contenido}: {contenido: Infogeneraciones}) => {
+export const InformacionGeneracion = ({contenido}: {contenido: Infogeneraciones | any}) => {
     return (
         <>
             <Box paddingTop="20px" sx={{ width: "100%", height: "100%", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>

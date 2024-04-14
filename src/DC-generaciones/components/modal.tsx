@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Box, Typography, Paper, IconButton, Tabs, Tab } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { InformacionGeneracion } from './InformacionGeneracion';
-import { Generacion } from '../services/getGeneraciones';
 import { useInfoGeneracioenesGeneraciones } from '../hooks/useInfoGeneraciones';
 import { InformacionGeneracionSkeleton } from './InformacionGeneracionSkeleton';
 
@@ -14,7 +13,7 @@ const ModalComponent = ({ open, handleClose, generacion }: { open: boolean, hand
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [value, setValue] = useState(0);
 
-    const { isLoading, isError, isSuccess, data, error} = useInfoGeneracioenesGeneraciones(generacion)
+    const { isLoading, isError, isSuccess, data, error} = useInfoGeneracioenesGeneraciones(generacion, open)
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);

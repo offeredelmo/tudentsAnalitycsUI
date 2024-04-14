@@ -28,6 +28,7 @@ import InformacionDocente from './DC-docentes/components/InformacionDocente.tsx'
 import { App2 } from './DC-generaciones/pages/generaciones.tsx';
 import LogIn from './User/pages/LogIn.tsx';
 import { Upload } from './DC-upload/page/upload.tsx';
+import EstudianteFormulario from './DC-estudiantes/pages/EstudianteFormulario.tsx';
 
 const darkTheme = createTheme({
   palette: {
@@ -47,7 +48,6 @@ const router = createBrowserRouter([
   },
 
   {
-
     path: "/director/",
     element: <Dashboard />,
     children: [
@@ -78,6 +78,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:"estudiante/:matricula",
+    element: <EstudianteFormulario/>
+  }
 ]);
 
 const queryClient = new QueryClient()
