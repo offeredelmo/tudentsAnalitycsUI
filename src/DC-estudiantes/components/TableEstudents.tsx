@@ -1,4 +1,4 @@
-import { Avatar, Chip, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Checkbox } from "@mui/material"
+import { Avatar, Chip, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Checkbox, Button } from "@mui/material"
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import GradeIcon from '@mui/icons-material/Grade';
@@ -12,7 +12,8 @@ const tableHead: string[] = [
     "Status",
     "Rezago",
     "Informacion",
-    "Favoritos"
+    "Favoritos",
+    ""
 ]
 const selectColor = (estatus) => {
     const lowerCaseEstatus = estatus.toLowerCase();
@@ -91,6 +92,9 @@ export const TableEstudents = ({ onMatriculaSelect, selectedMatriculas, estudent
                                                 {favorite(estuden.favorito)}
                                             </IconButton>
 
+                                        </TableCell>
+                                        <TableCell>
+                                            <Button variant="outlined">Send form</Button>
                                         </TableCell>
                                     </TableRow>
                                 )

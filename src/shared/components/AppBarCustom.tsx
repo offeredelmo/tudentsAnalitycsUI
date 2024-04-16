@@ -1,8 +1,6 @@
-// components/AppBarComponent.tsx
-
 import React from 'react';
-import { styled } from '@mui/material/styles';
-import MuiAppBar from '@mui/material/AppBar';
+import { styled, Theme } from '@mui/material/styles';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -10,9 +8,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const drawerWidth = 240;
 
+// Extiende las propiedades de MUI AppBar para incluir 'open'
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;  // Usar opcional si no siempre se pasa
+}
+
+// Crear un componente AppBar personalizado que acepte la propiedad 'open'
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
+})<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,

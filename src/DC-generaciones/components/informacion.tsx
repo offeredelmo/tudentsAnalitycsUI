@@ -72,7 +72,7 @@ const Imformacion = () => {
                         <Typography variant="subtitle1" sx={{ fontSize: isMobile ? '12px' : '14px', }}>BAJA DEFINITIVA</Typography>
                     </Box>
                 </Box>
-                <Grafica/>
+                {/* llamar la grafica aqui */}
             </Box>
     );
 };
