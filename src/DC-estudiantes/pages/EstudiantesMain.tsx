@@ -130,10 +130,7 @@ export const EstudiantesMain = () => {
                 <Typography color="text.primary">Estudiantes</Typography>
                 <Typography color="text.primary"></Typography>
             </Breadcrumbs>
-            <ToolBarEstudents onGenerateReport={handleGenerateReport} estudents={estudents} ></ToolBarEstudents>
-            {skeleton ? 
-                <TableEstudents onMatriculaSelect={handleSelectMatricula} selectedMatriculas={selectedMatriculas} estudents={estudents}></TableEstudents> : <TableEstudentsSkeleton></TableEstudentsSkeleton>
-            }
+            <TableEstudents onMatriculaSelect={handleSelectMatricula} selectedMatriculas={selectedMatriculas}></TableEstudents> :
 
             <BasicModal open={open} handleClose={handleClose} matriculas={selectedMatriculas}></BasicModal>
         </Box>

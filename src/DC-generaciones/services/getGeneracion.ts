@@ -1,12 +1,24 @@
 import axios from 'axios';
-import { Generacion} from './getGeneraciones';
+export interface Generacion {
+    total: number;
+    results:  Result[];
+}
+
+export interface Result {
+    generacion:                      string;
+    cantidad_estudiantes_con_rezago: number;
+    fecha_ingreso:                   string;
+    fecha_egreso:                    string;
+    total_estudiantes_generacion:    number;
+}
 
 
 
 
-export const getGeneracione = async (matricula: number): Promise<Generacion> => {
+export const getGeneracion = async (matricula: number): Promise<Generacion> => {
     try {
-        const rowData = await axios.get<Generacion>(`https://starfish-app-od7mr.ondigitalocean.app/api/v1/estudiantes/generacion/${matricula}`);
+        console.log(matricula)
+        const rowData = await axios.get<Generacion>(`https://starfish-app-od7mr.ondigitalocean.app/generaciones/${matricula}`);
         const data = rowData.data
         console.log(data)
         return data

@@ -26,21 +26,19 @@ import { TableComponent } from './DC-generaciones/components/generaciones.tsx';
 import { Busqueda } from './DC-docentes/components/Busqueda.tsx';
 import InformacionDocente from './DC-docentes/components/InformacionDocente.tsx';
 import { App2 } from './DC-generaciones/pages/generaciones.tsx';
-import LogIn from './User/pages/LogIn.tsx';
 import { Upload } from './DC-upload/page/upload.tsx';
 import EstudianteFormulario from './DC-estudiantes/pages/EstudianteFormulario.tsx';
-
+import { LogIn } from './User/pages/LogIn.tsx';
 const darkTheme = createTheme({
   palette: {
     mode: 'light',//se puede usar 'light'
   },
 });
 
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LogIn />,
+    element: <LogIn></LogIn>,
   },
   {
     path: "/sigin",

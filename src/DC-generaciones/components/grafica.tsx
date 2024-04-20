@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { EstatusCounts } from '../services/getInfoGeneracion';
 const data = [
     { name: 'Ene', inscrito: 30, bajaDefinitiva: 5, bajaAcademica: 5, titulados: 15 },
     { name: 'Feb', inscrito: 40, bajaDefinitiva: 8, bajaAcademica: 3, titulados: 20 },
@@ -8,7 +7,7 @@ const data = [
     { name: 'Abr', inscrito: 50, bajaDefinitiva: 12, bajaAcademica: 8, titulados: 30 },
     { name: 'May', inscrito: 55, bajaDefinitiva: 15, bajaAcademica: 10, titulados: 35 },
 ];
-const Grafica = ({contenido}: {contenido:EstatusCounts}) => {
+const Grafica = ({contenido}: {contenido:any}) => {
     return (
 
         <Box paddingTop="30px" sx={{ width: "90%", height: 300, position: 'relative' }}>

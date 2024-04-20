@@ -30,7 +30,7 @@ export const MainListItems = () => {
   return (
     <React.Fragment>
       <ListItemLink to="/director/docentes/main" icon={<DashboardIcon />} primary="Docentes" />
-      <ListItemLink to="/director/generaciones" icon={<ShoppingCartIcon />} primary="Generaciones" />
+      <ListItemLink to="/director/generaciones" icon={<ShoppingCartIcon />} primary="Cohortes" />
       <ListItemLink to="/director/estudiantes/main" icon={<PeopleIcon />} primary="Estudiantes" />
       <ListItemLink to="/director/subir-archivos" icon={<UploadFileIcon />} primary="Subir Archivos" />
     </React.Fragment>
