@@ -18,13 +18,13 @@ export interface Result {
 export const getGeneracion = async (matricula: number): Promise<Generacion> => {
     try {
         console.log(matricula)
-        const rowData = await axios.get<Generacion>(`https://starfish-app-od7mr.ondigitalocean.app/generaciones/${matricula}`);
+        const rowData = await axios.get<Generacion>(`https://urchin-app-mm9rx.ondigitalocean.app/generaciones/${matricula}`);
         const data = rowData.data
         console.log(data)
         return data
     } catch (error) {
         console.error("Ocurrió un error al obtener las generaciones:", error);
-        throw new Error(`${error}`); 
+        throw new Error(`${error}`);
     }
 };
 

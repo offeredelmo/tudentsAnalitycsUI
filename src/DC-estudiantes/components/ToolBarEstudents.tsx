@@ -26,9 +26,10 @@ const currencies = [
 ];
 interface ToolBarGeneracionesProps {
     onSearch: (matricula: string | null) => void;
+    refetch: any
   }
 
-export const ToolBarEstudents = ({ onSearch }: ToolBarGeneracionesProps) => {
+export const ToolBarEstudents = ({ onSearch, refetch}: ToolBarGeneracionesProps) => {
     const [matricula, setMatricula] = useState<string>('');
 
     const handleMatriculaChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,16 +49,16 @@ export const ToolBarEstudents = ({ onSearch }: ToolBarGeneracionesProps) => {
                     value={matricula}
                     onChange={handleMatriculaChange}
                 />
-                <IconButton aria-label="" onClick={() => { }}>
+                <IconButton aria-label="" onClick={() => {refetch()}}>
                     <FilterAltIcon></FilterAltIcon>
                 </IconButton>
             </Stack>
 
 
-            <Stack direction="row" spacing={2} alignItems="center" justifyContent="center">
-                {/* <Button variant="contained" size="medium"  onClick={onGenerateReport}>Agregar Reporte</Button> */}
+            {/* <Stack direction="row" spacing={2} alignItems="center" justifyContent="center">
+                 <Button variant="contained" size="medium"  onClick={onGenerateReport}>Agregar Reporte</Button> 
                 <Button variant="contained" size="medium">Enviar Formulario a todos los estudiantes</Button>
-            </Stack>
+            </Stack> */}
 
         </Stack>
     )

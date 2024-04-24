@@ -96,7 +96,6 @@ export const TableComponent = () => {
                   {
                     (searchTerm && isSuccessG ? dataG.results : data.results).map((generacion) => (
                       <TableRow key={generacion.generacion} hover>
-
                         <TableCell>{generacion.generacion}</TableCell>
                         <TableCell>{generacion.fecha_ingreso}</TableCell>
                         <TableCell>{generacion.fecha_egreso}</TableCell>

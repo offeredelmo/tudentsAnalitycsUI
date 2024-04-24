@@ -94,7 +94,6 @@ export const EstudiantesMain = () => {
 
     // logica para obtener las matriculas seleccionadas
     const [selectedMatriculas, setSelectedMatriculas] = useState<string[]>([]);
-    const [skeleton, setSkeleton] = useState(true)
 
 
     const handleSelectMatricula = (matricula: string, isSelected: boolean) => {

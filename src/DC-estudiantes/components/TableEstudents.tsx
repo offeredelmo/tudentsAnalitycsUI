@@ -31,7 +31,6 @@ const tableHead: string[] = [
   "Rezago",
   "Informacion",
   "Favoritos",
-  ""
 ];
 
 const selectColor = (estatus) => {
@@ -64,7 +63,7 @@ export const TableEstudents = ({ onMatriculaSelect, selectedMatriculas }) => {
   
   return (
     <>
-      <ToolBarEstudents onSearch={handleSearch}></ToolBarEstudents>
+      <ToolBarEstudents onSearch={handleSearch} refetch={refetch}></ToolBarEstudents>
 
       {isLoading ? <TableEstudentsSkeleton /> : null}
       {isError && <p>Error: {error.message}. Please refresh or try again later.</p>}
@@ -80,7 +79,8 @@ export const TableEstudents = ({ onMatriculaSelect, selectedMatriculas }) => {
             </TableHead>
             <TableBody>
               {data.datos.map(estuden => (
-                <TableRow key={estuden.id} hover>
+                
+                <TableRow key={estuden.matricula} hover>
                   <TableCell>
                     <Checkbox
                       onChange={(event) => handleSelect(event, estuden.matricula)}
@@ -115,7 +115,7 @@ export const TableEstudents = ({ onMatriculaSelect, selectedMatriculas }) => {
           <TablePagination
             rowsPerPageOptions={[10]}
             component="div"
-            count={data.total_datos} // Asumiendo que `total` es el total de estudiantes retornado por el servidor
+            count={data.total_datos} 
             rowsPerPage={perPage}
             page={page}
             onPageChange={handleChangePage}

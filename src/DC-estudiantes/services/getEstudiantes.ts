@@ -2,18 +2,18 @@ import axios from 'axios';
 
 export interface Estudiantes {
     total_datos: number;
-    datos:       Dato[];
+    datos: Dato[];
 }
 
 export interface Dato {
-    id:               number;
-    matricula:        string;
-    estatus:          string;
-    persona_id:       number | null;
-    nombre:           Nombre;
+    id: number;
+    matricula: string;
+    estatus: string;
+    persona_id: number | null;
+    nombre: Nombre;
     apellido_paterno: ApellidoPaterno;
     apellido_materno: ApellidoMaterno;
-    Rezago:           Rezago;
+    Rezago: Rezago;
 }
 
 export enum Rezago {
@@ -36,19 +36,14 @@ export enum Nombre {
 
 
 
-export const getEstudiantes = async (matricula: string = "", page: number = 1, perPage: number = 10): Promise<Estudiantes> => {
+export const getEstudiantes = async (matricula: string = "", page: number = 1, perPage: number = 10): Promise<Estudiantes | any > => {
     try {
-        console.log("hola")
-
-        const rowData = await axios.get<Estudiantes>(`https://starfish-app-od7mr.ondigitalocean.app/estudiante/matriculas?matricula=${matricula}&page=${page}&page_size=${perPage}`);
-        const data = rowData.data
-        console.log("hola")
+        const rowData = await axios.get<Estudiantes>(`https://urchin-app-mm9rx.ondigitalocean.app/estudiante/matriculas?page=1&page_size=12`);
         console.log(rowData.data)
-        console.log(rowData)
-        return data
+        return rowData.data
     } catch (error) {
         console.error("Ocurrió un error al obtener las generaciones:", error);
-        throw new Error(`${error}`); 
+        throw new Error(`${error}`);
     }
 };
 

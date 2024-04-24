@@ -17,7 +17,7 @@ export interface Result {
 export const getGeneraciones = async (page: number = 1, perPage: number = 10): Promise<Generaciones> => {
     try {
         console.log("hola")
-        const rowData = await axios.get<Generaciones>(`https://starfish-app-od7mr.ondigitalocean.app/generaciones_rezago?page=${page}&page_size=${perPage}`);
+        const rowData = await axios.get<Generaciones>(`https://urchin-app-mm9rx.ondigitalocean.app/generaciones_rezago?page=${page}&page_size=${perPage}`);
         const data = rowData.data
         console.log("hola")
         console.log(rowData.data)

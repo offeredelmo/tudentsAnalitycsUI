@@ -19,7 +19,7 @@ export interface Infogeneraciones {
 
 export const getInfoGeneraciones = async (matricula: number): Promise<Infogeneraciones> => {
     try {
-        const rowData = await axios.get<Infogeneraciones>(`https://starfish-app-od7mr.ondigitalocean.app/estudiantes_status_materias_reprobatorias/${matricula}`);
+        const rowData = await axios.get<Infogeneraciones>(`https://urchin-app-mm9rx.ondigitalocean.app/estudiantes_status_materias_reprobatorias/${matricula}`);
         const data = rowData.data
         return data
     } catch (error) {
