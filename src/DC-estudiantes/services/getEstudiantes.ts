@@ -38,7 +38,7 @@ export enum Nombre {
 
 export const getEstudiantes = async (matricula: string = "", page: number = 1, perPage: number = 10): Promise<Estudiantes | any > => {
     try {
-        const rowData = await axios.get<Estudiantes>(`https://urchin-app-mm9rx.ondigitalocean.app/estudiante/matriculas?page=1&page_size=12`);
+        const rowData = await axios.get<Estudiantes>(`https://urchin-app-mm9rx.ondigitalocean.app/api/v1/estudiante?page=${page}&page_size=${perPage}`);
         console.log(rowData.data)
         return rowData.data
     } catch (error) {

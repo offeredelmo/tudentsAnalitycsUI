@@ -1,6 +1,6 @@
 import axios from 'axios';
 export interface Generacion {
-    total: number;
+    cantidad: number;
     results:  Result[];
 }
 
@@ -18,7 +18,7 @@ export interface Result {
 export const getGeneracion = async (matricula: number): Promise<Generacion> => {
     try {
         console.log(matricula)
-        const rowData = await axios.get<Generacion>(`https://urchin-app-mm9rx.ondigitalocean.app/generaciones/${matricula}`);
+        const rowData = await axios.get<Generacion>(`https://urchin-app-mm9rx.ondigitalocean.app/api/v1/cohortes/:${matricula}`);
         const data = rowData.data
         console.log(data)
         return data

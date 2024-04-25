@@ -114,7 +114,7 @@ export const TableComponent = () => {
               <TablePagination
                 rowsPerPageOptions={[10]}
                 component="div"
-                count={searchTerm && isSuccessG ? dataG.total : data.total}
+                count={searchTerm && isSuccessG ? dataG.cantidad : data.total}
                 rowsPerPage={perPage}
                 page={page}
                 onPageChange={handleChangePage}
